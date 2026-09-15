@@ -1,41 +1,282 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Brotea — proyecto de microgreens enfocado en cultivo, nutrición y sostenibilidad." />
+  <title>Brotea | Microgreens</title>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
 
-  <title>Verdea | Microgreens</title>
-
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            display: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            cream: '#F3F0E7',
+            forest: '#163B2C',
+            sage: '#A8BEA4',
+            lime: '#D8E7A4',
+          }
+        }
+      }
+    }
+  </script>
 
-  <!-- JavaScript -->
   <script src="./js/main.js" defer></script>
 </head>
 
-<body class="bg-white text-neutral-900">
+<body class="bg-cream text-forest font-sans antialiased overflow-x-hidden">
+
+  <!-- NAVBAR -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+    <nav class="max-w-[1500px] mx-auto px-5 md:px-10 lg:px-14 py-5 flex items-center justify-between">
+      <a href="#inicio" class="text-2xl md:text-3xl font-semibold tracking-[-0.05em]">brotea.</a>
+
+      <div class="hidden md:flex items-center gap-7 lg:gap-10 text-sm font-medium">
+        <a href="#proyecto" class="nav-link transition-opacity hover:opacity-50">Proyecto</a>
+        <a href="#microgreens" class="nav-link transition-opacity hover:opacity-50">Microgreens</a>
+        <a href="#beneficios" class="nav-link transition-opacity hover:opacity-50">Beneficios</a>
+        <a href="#proceso" class="nav-link transition-opacity hover:opacity-50">Proceso</a>
+      </div>
+
+      <a href="#microgreens" class="hidden md:inline-flex items-center gap-2 bg-forest text-white px-5 py-3 rounded-full text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#23513E]">
+        Conocer el proyecto
+        <span aria-hidden="true">↗</span>
+      </a>
+
+      <button id="menuBtn" class="md:hidden w-11 h-11 rounded-full border border-forest/20 flex items-center justify-center" aria-label="Abrir menú" aria-expanded="false">
+        <span id="menuIcon" class="text-xl">☰</span>
+      </button>
+    </nav>
+
+    <div id="mobileMenu" class="hidden md:hidden mx-4 rounded-3xl bg-forest text-white p-6 shadow-2xl">
+      <div class="flex flex-col gap-5 text-lg">
+        <a class="mobile-link" href="#proyecto">Proyecto</a>
+        <a class="mobile-link" href="#microgreens">Microgreens</a>
+        <a class="mobile-link" href="#beneficios">Beneficios</a>
+        <a class="mobile-link" href="#proceso">Proceso</a>
+      </div>
+    </div>
+  </header>
 
   <main>
-    <section class="min-h-screen flex items-center justify-center">
-      <div class="text-center">
-        <p class="mb-3 text-sm uppercase tracking-[0.3em] text-green-700">
-          Microgreens
-        </p>
+    <!-- HERO -->
+    <section id="inicio" class="relative min-h-screen pt-28 md:pt-32 pb-8 md:pb-10 px-4 md:px-8 lg:px-10 flex items-stretch">
+      <div class="relative w-full min-h-[calc(100vh-8rem)] rounded-[2rem] md:rounded-[3rem] overflow-hidden bg-forest">
+        <img
+          src="https://images.unsplash.com/photo-1512428813834-c702c7702b78?auto=format&fit=crop&w=2200&q=90"
+          alt="Cultivo verde de microgreens"
+          class="absolute inset-0 w-full h-full object-cover scale-[1.03]"
+        />
 
-        <h1 class="text-6xl md:text-8xl font-semibold tracking-tight">
-          Brotea
-        </h1>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0D2A20]/90 via-[#143729]/55 to-[#143729]/10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
 
-        <p class="mt-6 text-lg text-neutral-600">
-          Cultivo, nutrición y sostenibilidad.
-        </p>
+        <div class="relative z-10 h-full min-h-[calc(100vh-8rem)] max-w-[1500px] mx-auto px-6 md:px-12 lg:px-16 py-10 md:py-14 flex flex-col justify-between text-white">
+          <div class="hero-animate opacity-0 translate-y-5 transition-all duration-700 flex items-center gap-3 text-[11px] md:text-xs uppercase tracking-[0.28em] font-semibold">
+            <span class="w-8 h-px bg-white/60"></span>
+            Proyecto de microgreens
+          </div>
+
+          <div class="max-w-5xl py-14 md:py-20 lg:py-16">
+            <h1 class="hero-animate opacity-0 translate-y-8 transition-all duration-1000 text-[clamp(4.3rem,10vw,9.5rem)] font-semibold tracking-[-0.07em] leading-[0.8]">
+              Brotea.
+              <span class="block mt-3 md:mt-5 font-display font-medium italic tracking-[-0.04em] text-lime text-[0.52em] md:text-[0.46em] leading-[0.95]">
+                pequeño cultivo,<br class="hidden sm:block"> gran impacto.
+              </span>
+            </h1>
+
+            <p class="hero-animate opacity-0 translate-y-6 transition-all duration-1000 mt-8 md:mt-10 max-w-xl text-base md:text-lg lg:text-xl text-white/80 leading-relaxed">
+              Una exploración del potencial productivo, nutricional y sustentable de los microgreens.
+            </p>
+
+            <div class="hero-animate opacity-0 translate-y-6 transition-all duration-1000 mt-8 md:mt-10 flex flex-wrap gap-3">
+              <a href="#proyecto" class="inline-flex items-center justify-center bg-lime text-forest px-6 py-3.5 rounded-full font-semibold transition-transform duration-300 hover:-translate-y-1">
+                Explorar proyecto
+              </a>
+              <a href="#microgreens" class="inline-flex items-center justify-center border border-white/35 bg-white/10 backdrop-blur-md px-6 py-3.5 rounded-full font-medium transition-colors hover:bg-white/20">
+                ¿Qué son los microgreens?
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-animate opacity-0 translate-y-4 transition-all duration-1000 flex items-end justify-between gap-6 text-xs uppercase tracking-[0.2em] text-white/70">
+            <span>Nutrición · Cultivo · Sustentabilidad</span>
+            <a href="#proyecto" class="hidden md:flex items-center gap-3 group">
+              Descubrir
+              <span class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center transition-transform group-hover:translate-y-1">↓</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTO -->
+    <section id="proyecto" class="px-6 md:px-10 lg:px-14 py-24 md:py-36 lg:py-44">
+      <div class="max-w-[1400px] mx-auto">
+        <div class="reveal opacity-0 translate-y-10 transition-all duration-1000 grid lg:grid-cols-[0.7fr_2fr] gap-10 lg:gap-20 items-start">
+          <p class="text-xs uppercase tracking-[0.28em] font-semibold text-forest/55">01 — El proyecto</p>
+
+          <div>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-[-0.055em] leading-[0.98] max-w-5xl">
+              Cultivar más cerca, consumir más fresco y entender mejor lo que comemos.
+            </h2>
+            <div class="mt-10 md:mt-14 grid md:grid-cols-2 gap-8 md:gap-12 max-w-4xl">
+              <p class="text-lg text-forest/75 leading-relaxed">
+                Brotea nace como una propuesta centrada en los microgreens: vegetales jóvenes que combinan ciclos de cultivo cortos, gran valor visual y una interesante densidad nutricional.
+              </p>
+              <p class="text-lg text-forest/75 leading-relaxed">
+                El proyecto observa su producción desde una perspectiva práctica, sustentable y adaptable a espacios reducidos, conectando alimento, territorio e innovación.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MICROGREENS -->
+    <section id="microgreens" class="bg-forest text-cream px-5 md:px-8 lg:px-10 py-5 md:py-8">
+      <div class="max-w-[1500px] mx-auto rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-white/10">
+        <div class="grid lg:grid-cols-2 min-h-[780px]">
+          <div class="reveal opacity-0 translate-y-10 transition-all duration-1000 p-8 md:p-12 lg:p-16 xl:p-20 flex flex-col justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-[0.3em] text-sage mb-7">02 — Microgreens</p>
+              <h2 class="text-5xl md:text-6xl xl:text-8xl font-semibold tracking-[-0.06em] leading-[0.9]">
+                Pequeños en tamaño.
+                <span class="block mt-3 font-display italic font-medium text-lime text-[0.75em] tracking-[-0.03em]">Grandes en potencial.</span>
+              </h2>
+            </div>
+
+            <div class="mt-12 lg:mt-16 max-w-xl space-y-6 text-base md:text-lg leading-relaxed text-cream/75">
+              <p>
+                Los microgreens son vegetales jóvenes cosechados durante las primeras etapas del desarrollo de la planta. Se destacan por sus colores, aromas, texturas y sabores intensos.
+              </p>
+              <p>
+                Su ciclo rápido y la posibilidad de producirlos en superficies reducidas hacen que sean especialmente interesantes para modelos de cultivo urbano y de proximidad.
+              </p>
+            </div>
+          </div>
+
+          <div class="reveal opacity-0 translate-y-10 transition-all duration-1000 p-3 md:p-5 lg:p-6">
+            <div class="relative h-full min-h-[560px] rounded-[1.5rem] md:rounded-[2.4rem] overflow-hidden group">
+              <img
+                src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1600&q=90"
+                alt="Detalle de cultivo verde"
+                class="w-full h-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+              <div class="absolute left-6 md:left-8 bottom-6 md:bottom-8 right-6 md:right-8">
+                <p class="text-[11px] uppercase tracking-[0.25em] text-white/70">Cultivo joven</p>
+                <p class="mt-2 text-2xl md:text-3xl font-medium text-white">Frescura desde el origen.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section id="beneficios" class="px-6 md:px-10 lg:px-14 py-28 md:py-40 bg-cream">
+      <div class="max-w-[1400px] mx-auto">
+        <div class="reveal opacity-0 translate-y-10 transition-all duration-1000 flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16 md:mb-20">
+          <div>
+            <p class="text-xs uppercase tracking-[0.3em] text-forest/55 mb-6">03 — ¿Por qué microgreens?</p>
+            <h2 class="text-5xl md:text-7xl font-semibold tracking-[-0.06em] leading-[0.95] max-w-3xl">Mucho valor en muy poco espacio.</h2>
+          </div>
+          <p class="max-w-md text-forest/65 text-lg leading-relaxed">
+            Cuatro características que explican por qué los microgreens generan interés tanto productivo como gastronómico.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+          <article class="reveal opacity-0 translate-y-10 transition-all duration-700 bg-[#E5ECD6] rounded-[2rem] p-7 md:p-8 min-h-[330px] flex flex-col justify-between hover:-translate-y-2">
+            <span class="text-sm font-semibold">01</span>
+            <div>
+              <div class="text-4xl mb-5">✦</div>
+              <h3 class="text-2xl font-semibold tracking-tight">Nutrición</h3>
+              <p class="mt-3 text-forest/65 leading-relaxed">Alimentos jóvenes con gran interés por su concentración de compuestos bioactivos.</p>
+            </div>
+          </article>
+
+          <article class="reveal opacity-0 translate-y-10 transition-all duration-700 bg-[#D8E7A4] rounded-[2rem] p-7 md:p-8 min-h-[330px] flex flex-col justify-between hover:-translate-y-2">
+            <span class="text-sm font-semibold">02</span>
+            <div>
+              <div class="text-4xl mb-5">◌</div>
+              <h3 class="text-2xl font-semibold tracking-tight">Ciclo corto</h3>
+              <p class="mt-3 text-forest/65 leading-relaxed">Muchas variedades pueden cosecharse en pocos días, acelerando el proceso productivo.</p>
+            </div>
+          </article>
+
+          <article class="reveal opacity-0 translate-y-10 transition-all duration-700 bg-[#C6D8C0] rounded-[2rem] p-7 md:p-8 min-h-[330px] flex flex-col justify-between hover:-translate-y-2">
+            <span class="text-sm font-semibold">03</span>
+            <div>
+              <div class="text-4xl mb-5">⌂</div>
+              <h3 class="text-2xl font-semibold tracking-tight">Poco espacio</h3>
+              <p class="mt-3 text-forest/65 leading-relaxed">Su producción puede adaptarse a superficies reducidas y sistemas de cultivo controlados.</p>
+            </div>
+          </article>
+
+          <article class="reveal opacity-0 translate-y-10 transition-all duration-700 bg-[#F0D9B9] rounded-[2rem] p-7 md:p-8 min-h-[330px] flex flex-col justify-between hover:-translate-y-2">
+            <span class="text-sm font-semibold">04</span>
+            <div>
+              <div class="text-4xl mb-5">↻</div>
+              <h3 class="text-2xl font-semibold tracking-tight">Proximidad</h3>
+              <p class="mt-3 text-forest/65 leading-relaxed">Permiten imaginar producciones cercanas al consumidor y una cadena más corta.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section id="proceso" class="px-6 md:px-10 lg:px-14 pb-28 md:pb-40">
+      <div class="max-w-[1400px] mx-auto border-t border-forest/15 pt-20">
+        <div class="reveal opacity-0 translate-y-10 transition-all duration-1000 grid lg:grid-cols-[1fr_1.6fr] gap-14 lg:gap-24">
+          <div>
+            <p class="text-xs uppercase tracking-[0.3em] text-forest/55 mb-6">04 — Proceso</p>
+            <h2 class="text-5xl md:text-6xl font-semibold tracking-[-0.06em] leading-[0.95]">Del grano a la cosecha.</h2>
+          </div>
+
+          <div class="divide-y divide-forest/15">
+            <div class="process-row py-6 first:pt-0 flex gap-6 md:gap-10 items-start">
+              <span class="text-sm font-semibold text-forest/45 pt-1">01</span>
+              <div><h3 class="text-2xl font-semibold">Selección y siembra</h3><p class="mt-2 text-forest/65 leading-relaxed">Elección de semillas y preparación de bandejas o sustratos según la variedad.</p></div>
+            </div>
+            <div class="process-row py-6 flex gap-6 md:gap-10 items-start">
+              <span class="text-sm font-semibold text-forest/45 pt-1">02</span>
+              <div><h3 class="text-2xl font-semibold">Germinación</h3><p class="mt-2 text-forest/65 leading-relaxed">Control inicial de humedad, temperatura y condiciones adecuadas para el desarrollo.</p></div>
+            </div>
+            <div class="process-row py-6 flex gap-6 md:gap-10 items-start">
+              <span class="text-sm font-semibold text-forest/45 pt-1">03</span>
+              <div><h3 class="text-2xl font-semibold">Crecimiento</h3><p class="mt-2 text-forest/65 leading-relaxed">Exposición a luz, riego y seguimiento de cada cultivo hasta alcanzar su punto ideal.</p></div>
+            </div>
+            <div class="process-row py-6 flex gap-6 md:gap-10 items-start">
+              <span class="text-sm font-semibold text-forest/45 pt-1">04</span>
+              <div><h3 class="text-2xl font-semibold">Cosecha</h3><p class="mt-2 text-forest/65 leading-relaxed">Corte, observación y preparación del producto final para consumo o evaluación.</p></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
+
+  <footer class="bg-forest text-cream px-6 md:px-10 lg:px-14 py-12">
+    <div class="max-w-[1400px] mx-auto flex flex-col sm:flex-row gap-6 sm:items-end sm:justify-between">
+      <div>
+        <p class="text-4xl font-semibold tracking-[-0.05em]">brotea.</p>
+        <p class="mt-2 text-sm text-cream/55">Proyecto de microgreens.</p>
+      </div>
+      <p class="text-xs uppercase tracking-[0.2em] text-cream/45">Cultivo · Nutrición · Sustentabilidad</p>
+    </div>
+  </footer>
 
 </body>
 </html>
