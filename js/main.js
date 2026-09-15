@@ -1,0 +1,1 @@
+console.log("Verdea iniciado correctamente");
